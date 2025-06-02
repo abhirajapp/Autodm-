@@ -1,20 +1,19 @@
+// auth.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Auth Tabs
+    // Auth Tabs Switching
     const authTabs = document.querySelectorAll('.auth-tab');
     authTabs.forEach(tab => {
         tab.addEventListener('click', function() {
-            // Remove active class from all tabs and forms
             document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
             
-            // Add active class to clicked tab and corresponding form
             this.classList.add('active');
             const tabId = this.getAttribute('data-tab');
             document.getElementById(tabId + 'Form').classList.add('active');
         });
     });
 
-    // Form Submission
+    // Login Form Submission
     const loginForm = document.getElementById('loginFormElement');
     if (loginForm) {
         loginForm.addEventListener('submit', function(e) {
@@ -22,9 +21,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             
-            // Simple validation
             if (email && password) {
+                // Simulate successful login
                 localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
                 window.location.href = 'dashboard.html';
             } else {
                 alert('Please enter both email and password');
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Register Form Submission
     const registerForm = document.getElementById('registerFormElement');
     if (registerForm) {
         registerForm.addEventListener('submit', function(e) {
@@ -47,7 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             if (name && email && password) {
+                // Simulate successful registration
                 localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userName', name);
                 window.location.href = 'dashboard.html';
             } else {
                 alert('Please fill all fields');
@@ -56,27 +60,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Social Login Buttons
-    const googleBtn = document.querySelector('.btn-google');
-    if (googleBtn) {
-        googleBtn.addEventListener('click', function() {
-            localStorage.setItem('isLoggedIn', 'true');
-            window.location.href = 'dashboard.html';
-        });
-    }
+    document.getElementById('googleLogin')?.addEventListener('click', function() {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', 'google-user@example.com');
+        window.location.href = 'dashboard.html';
+    });
 
-    const facebookBtn = document.querySelector('.btn-facebook');
-    if (facebookBtn) {
-        facebookBtn.addEventListener('click', function() {
-            localStorage.setItem('isLoggedIn', 'true');
-            window.location.href = 'dashboard.html';
-        });
-    }
+    document.getElementById('facebookLogin')?.addEventListener('click', function() {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', 'facebook-user@example.com');
+        window.location.href = 'dashboard.html';
+    });
 
-    const gmailBtn = document.querySelector('.btn-gmail');
-    if (gmailBtn) {
-        gmailBtn.addEventListener('click', function() {
-            localStorage.setItem('isLoggedIn', 'true');
-            window.location.href = 'dashboard.html';
-        });
-    }
+    document.getElementById('gmailLogin')?.addEventListener('click', function() {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userEmail', 'gmail-user@example.com');
+        window.location.href = 'dashboard.html';
+    });
 });
