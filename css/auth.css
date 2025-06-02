@@ -116,6 +116,24 @@
     color: #666;
 }
 
+.btn-google {
+    background: #DB4437;
+    margin-bottom: 10px;
+}
+
+.btn-google:hover {
+    background: #c23325;
+}
+
+.btn-facebook {
+    background: #4267B2;
+    margin-bottom: 10px;
+}
+
+.btn-facebook:hover {
+    background: #3a5a9a;
+}
+
 @media (max-width: 576px) {
     .auth-container {
         padding: 20px;
